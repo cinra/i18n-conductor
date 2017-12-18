@@ -54,3 +54,12 @@ function the_i18n_term_field($key, $term_id, $taxonomy)
 {
   echo get_i18n_term_field($key, $term_id, $taxonomy);
 }
+
+function have_i18n_rows($key, $post_id = null)
+{
+  return have_rows( get_i18n_key( $key ), $post_id );
+}
+function the_i18n_row($key, $post_id = null)
+{
+  return the_row( get_i18n_key( $key ), $post_id );
+}
