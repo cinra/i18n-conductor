@@ -17,7 +17,7 @@ defined('I18N_CONDUCTOR_LANGUAGE_DIRECTORY') || define('I18N_CONDUCTOR_LANGUAGE_
 defined('I18N_CONDUCTOR_LANGUAGE_TAXONOMY') || define('I18N_CONDUCTOR_LANGUAGE_TAXONOMY', 'lang');
 defined('I18N_CONDUCTOR_DEFAULT_LANG') || define('I18N_CONDUCTOR_DEFAULT_LANG', 'ja');
 defined('I18N_CONDUCTOR_DOMAIN') || define('I18N_CONDUCTOR_DOMAIN', 'i18nc');
-defined('I18N_CONDUCTOR_REDIRECT_OR_NOTFOUND') || define('I18N_CONDUCTOR_REDIRECT_OR_NOTFOUND', 'redirect');
+defined('I18N_CONDUCTOR_USE_NOTFOUND') || define('I18N_CONDUCTOR_USE_NOTFOUND', false);
 defined('I18N_CONDUCTOR_NOTFOUND_REDIRECT_SLUG') || define('I18N_CONDUCTOR_NOTFOUND_REDIRECT_SLUG', '');
 
 class I18n_Conductor
@@ -187,7 +187,7 @@ class I18n_Conductor
 
     if (is_404() && $is_single)
     {
-      if ('redirect' === I18N_CONDUCTOR_REDIRECT_OR_NOTFOUND && ($redirect_url = $this->get_redirect_url()))
+      if (true === I18N_CONDUCTOR_USE_NOTFOUND && ($redirect_url = $this->get_redirect_url()))
       {
         wp_safe_redirect($redirect_url);
         exit;
