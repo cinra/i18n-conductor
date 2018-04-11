@@ -84,9 +84,11 @@ class I18n_Conductor
 
     $post->content = get_i18n_field('content');
 
+    if (!$post->content) return $raw;
+
     setup_postdata( $post );
 
-    return $raw;
+    return $post->content ? : $raw;
   }
 
   public function home_url($url, $path)
