@@ -80,8 +80,15 @@ class I18n_Conductor
   {
     if (is_admin() || !$this->acf_exists) return $raw;
 
-    $content = get_i18n_field('content');
-    return !$content ? $raw : $content;
+    global $post;
+
+    $post->post_content = get_i18n_field('content');
+
+    if (!$post->post_content) return $raw;
+
+    setup_postdata( $post );
+
+    return get_the_content() ? : $raw;
   }
 
   public function home_url($url, $path)
